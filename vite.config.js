@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/phys-course-prerequisite/',
+  base: '/PHYS-Course-Prerequisite/',
 });
