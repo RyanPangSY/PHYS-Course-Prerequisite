@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Prerequisites Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div id="header">
+    <h1>Course Prerequisites</h1>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-color" style="background-color: #ccc;"></span> Unstudied</div>
+      <div class="legend-item"><span class="legend-color" style="background-color: #4CAF50;"></span> Studied</div>
+      <div class="legend-item"><span class="legend-color" style="background-color: #FF9800;"></span> Can Study</div>
+      <div class="legend-item"><span class="legend-color" style="background-color: #90A4AE;"></span> AND</div>
+      <div class="legend-item"><span class="legend-color" style="background-color: #BCAAA4;"></span> OR</div>
+      <div class="legend-item" style="margin-left: 20px; font-size: 13px; color: #666;"><em>Press <strong>Spacebar</strong> to center graph</em></div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="sidebar">
+      <div class="sidebar-section">
+        <h3 style="margin-top: 0;">Add Studied Course</h3>
+        <div id="search-container">
+          <input type="text" id="course-search" placeholder="Search code or title..." autocomplete="off">
+          <div id="search-results"></div>
+        </div>
+      </div>
+      <div id="studied-list">
+        <!-- Studied courses will appear here -->
+      </div>
+      <div id="target-section">
+        <h3 style="margin-top: 0;">Check Prerequisites</h3>
+        <div id="target-search-container">
+          <input type="text" id="target-search" placeholder="Search target course..." autocomplete="off">
+          <div id="target-search-results"></div>
+        </div>
+        <div id="target-prereq-display">
+          <!-- Prereq tree will appear here -->
+        </div>
+      </div>
+    </div>
+    <div id="resizer"></div>
+    <div id="chart-container">
+      <div id="chart"></div>
+      <div id="tooltip" class="tooltip"></div>
+    </div>
+  </div>
+
+  <!-- Load the scraped data automatically -->
+  <script src="data.js"></script>
+  <script src="src/script.js"></script>
+</body>
+</html>
