@@ -154,7 +154,7 @@ const courseDetails = await Promise.all(courses.map(async (course) => {
 
 // Write to data.js so index.html can load it automatically
 const outputPath = path.join(__dirname, "..", "data.js");
-const fileContent = `const courseData = ${JSON.stringify(courseDetails, null, 2)};`;
+const fileContent = `export const courseData = ${JSON.stringify(courseDetails, null, 2)};`;
 fs.writeFileSync(outputPath, fileContent, "utf-8");
 
 console.log(`Successfully scraped ${courseDetails.length} courses and saved to data.js`);

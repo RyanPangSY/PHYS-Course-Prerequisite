@@ -1,4 +1,4 @@
-const courseData = [
+export const courseData = [
   {
     "code": "SCNC1111",
     "title": "Scientific method and reasoning (6)",

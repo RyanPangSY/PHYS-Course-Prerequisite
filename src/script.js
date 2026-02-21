@@ -1,3 +1,5 @@
+import { courseData } from '../data.js';
+
 // State
 const studiedCourses = new Set();
 
