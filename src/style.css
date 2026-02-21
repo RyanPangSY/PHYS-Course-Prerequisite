@@ -57,7 +57,6 @@ h1 {
   width: 100%;
   height: 100%;
 }
-/* Search styles */
 #search-container {
   position: relative;
 }
@@ -92,14 +91,12 @@ h1 {
 .search-result-item:hover {
   background: #f0f0f0;
 }
-/* Studied list styles */
 #studied-list {
   flex: 0.6;
   overflow-y: auto;
   padding: 20px;
   background: #fdfdfd;
 }
-/* Target section styles */
 #target-section {
   flex: 1.4;
   display: flex;
@@ -171,7 +168,6 @@ h1 {
 .remove-btn:hover {
   color: #b71c1c;
 }
-/* D3 styles */
 .node circle {
   stroke: #fff;
   stroke-width: 2px;
