@@ -1,4 +1,7 @@
 {
+  "name": "phys-course-prerequisite",
+  "version": "1.0.0",
+  "author": "rpsy6138 <rpsy6138@connect.hku.hk>",
   "type": "module",
   "scripts": {
     "start": "node src/scrape.js",
