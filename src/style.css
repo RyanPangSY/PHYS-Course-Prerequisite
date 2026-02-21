@@ -175,7 +175,6 @@ h1 {
 }
 .node text {
   font-size: 12px;
-  pointer-events: none;
 }
 .link {
   fill: none;

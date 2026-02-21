@@ -1,7 +1,12 @@
 import { courseData } from '../data.js';
 
 // State
-const studiedCourses = new Set();
+const savedCourses = localStorage.getItem('studiedCourses');
+const studiedCourses = new Set(savedCourses ? JSON.parse(savedCourses) : []);
+
+function saveStudiedCourses() {
+  localStorage.setItem('studiedCourses', JSON.stringify(Array.from(studiedCourses)));
+}
 
 // DOM Elements
 const searchInput = document.getElementById('course-search');
@@ -163,6 +168,7 @@ function renderTargetPrereqs() {
 
 function addStudiedCourse(code) {
   studiedCourses.add(code);
+  saveStudiedCourses();
   searchInput.value = '';
   searchResults.style.display = 'none';
   renderStudiedCourses();
@@ -172,10 +178,14 @@ function addStudiedCourse(code) {
 
 function removeStudiedCourse(code) {
   studiedCourses.delete(code);
+  saveStudiedCourses();
   renderStudiedCourses();
   updateChartColors();
   renderTargetPrereqs();
 }
+
+// Expose to window so inline onclick handlers can access it
+window.removeStudiedCourse = removeStudiedCourse;
 
 function renderStudiedCourses() {
   studiedList.innerHTML = studiedCourses.size === 0 
@@ -336,11 +346,23 @@ const colorScale = {
 };
 
 const circles = node.append("circle")
-  .attr("r", d => d.type === 'course' ? 15 : 10);
+  .attr("r", d => d.type === 'course' ? 15 : 10)
+  .style("cursor", d => d.type === 'course' ? 'pointer' : 'default')
+  .on("click", (event, d) => {
+    if (d.type === 'course') {
+      window.open(`https://webapp.science.hku.hk/sr4/servlet/enquiry?Type=Course&course_code=${d.id}`, '_blank');
+    }
+  });
 
 node.append("text")
   .attr("dx", 18)
   .attr("dy", ".35em")
+  .style("cursor", d => d.type === 'course' ? 'pointer' : 'default')
+  .on("click", (event, d) => {
+    if (d.type === 'course') {
+      window.open(`https://webapp.science.hku.hk/sr4/servlet/enquiry?Type=Course&course_code=${d.id}`, '_blank');
+    }
+  })
   .text(d => d.label);
 
 const tooltip = d3.select("#tooltip");
